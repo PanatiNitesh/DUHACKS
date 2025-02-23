@@ -292,19 +292,29 @@ body, html {
   background-color: #f8f9fa;
 }
 
-/* Responsive adjustments */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-  .welcome-message {
-    font-size: 16px;
+  .feature-cards {
+    grid-template-columns: 1fr; /* One column for mobile */
   }
 
-  .recent-expenses {
-    margin: 16px;
-    padding: 16px;
+  .feature-card {
+    flex-direction: column; /* Stack image on top in smaller screens */
+    align-items: center;
+    text-align: center;
   }
 
-  .expense-history {
-    font-size: 14px;
+  .card-image {
+    margin: 0 0 16px 0; /* Space below image */
+  }
+
+  .card-content {
+    align-items: center; /* Center align text */
+    text-align: center; /* Center align text */
+  }
+
+  .feature-card h2, .feature-card p {
+    text-align: center; /* Center align text */
   }
 }
 

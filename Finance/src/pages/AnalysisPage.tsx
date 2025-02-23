@@ -57,7 +57,7 @@ const AnalysisPage = () => {
         }
 
         const response = await axios.get(
-          `http://localhost:5000/api/expenses/analysis/${encodeURIComponent(expenseType)}`,
+          `https://duhacks-p6t6.onrender.com/api/expenses/analysis/${encodeURIComponent(expenseType)}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -91,7 +91,7 @@ const AnalysisPage = () => {
   
       // Call the backend endpoint
       const response = await axios.post(
-        "http://localhost:5000/api/generate-insights", // Backend endpoint
+        "https://duhacks-p6t6.onrender.com/api/generate-insights", // Backend endpoint
         { categories, amounts },
         {
           headers: {

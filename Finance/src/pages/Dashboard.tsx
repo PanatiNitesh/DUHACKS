@@ -24,27 +24,27 @@ const Dashboard = () => {
   const expenseTypes = [
     {
       name: "Full Expense Tracker",
-      img: "src/assets/expense-tracker.png",
+      img: "public/assets/expense-tracker.png",
       description: "Track all your expenses in one place",
     },
     {
       name: "Business Expense Tracker",
-      img: "src/assets/business-expense.png",
+      img: "public/assets/business-expense.png",
       description: "Manage your business-related expenses",
     },
     {
       name: "Personal Expense Tracker",
-      img: "src/assets/personal-expense.png",
+      img: "public/assets/personal-expense.png",
       description: "Keep track of your personal spending",
     },
     {
       name: "Daily Expense Tracker",
-      img: "src/assets/daily-expense.png",
+      img: "public/assets/daily-expense.png",
       description: "Monitor your daily expenditures",
     },
     {
       name: "Other Expenses",
-      img: "src/assets/other-expenses.png",
+      img: "public/assets/other-expenses.png",
       description: "Track miscellaneous expenses",
     },
   ];
@@ -75,7 +75,7 @@ const Dashboard = () => {
         throw new Error("No auth token found");
       }
 
-      const response = await axios.get("http://localhost:5000/api/expenses/recent", {
+      const response = await axios.get("https://duhacks-p6t6.onrender.com/api/expenses/recent", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -113,7 +113,7 @@ const Dashboard = () => {
       }
 
       const response = await axios.post(
-        "http://localhost:5000/api/logout",
+        "https://duhacks-p6t6.onrender.com/api/logout",
         {},
         {
           headers: {

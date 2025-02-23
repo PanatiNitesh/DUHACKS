@@ -14,7 +14,7 @@ const AboutUs = () => {
         {/* Team Member 1 */}
         <div className="team-member">
           <img
-src="src/assets/ravindra.jpg"            alt="Ravindra S"
+src="public/assets/ravindra.jpg"            alt="Ravindra S"
             className="profile-pic" onError={(e) => {
                 e.currentTarget.src = "https://via.placeholder.com/150"; // Fallback image
               }}
@@ -40,7 +40,7 @@ src="src/assets/ravindra.jpg"            alt="Ravindra S"
         {/* Team Member 2 */}
         <div className="team-member">
           <img
-src="src/assets/nitesh.jpg"             alt="Nitesh Reddy"
+src="public/assets/nitesh.jpg"             alt="Nitesh Reddy"
             className="profile-pic"
             onError={(e) => {
                 e.currentTarget.src = "https://via.placeholder.com/150"; // Fallback image

@@ -28,7 +28,7 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/register", formData);
+      const response = await axios.post("https://duhacks-p6t6.onrender.com/api/register", formData);
       if (response.data.success) {
         localStorage.setItem("username", response.data.username); 
         navigate("/dashboard");

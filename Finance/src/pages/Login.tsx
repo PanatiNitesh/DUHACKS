@@ -25,7 +25,7 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/login", formData);
+      const response = await axios.post("https://duhacks-p6t6.onrender.com/api/login", formData);
 
       if (response.data.success) {
         // Store token for authentication
