@@ -13,7 +13,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(cors({ origin: "https://cost-sage-du-hacks.netlify.app/", credentials: true }));
+app.use(cors({ origin: "https://cost-sage-du-hacks.netlify.app", credentials: true }));
 app.use(express.json());
 
 mongoose
