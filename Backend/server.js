@@ -150,6 +150,27 @@ app.post("/api/register", async (req, res) => {
     res.status(500).json({ success: false, message: "Server error" });
   }
 });
+app.delete("/api/expenses/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const token = req.headers.authorization?.split(" ")[1]; // Extract token
+
+    if (!token) {
+      return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+
+    const deletedExpense = await Expense.findByIdAndDelete(id);
+
+    if (!deletedExpense) {
+      return res.status(404).json({ success: false, message: "Expense not found" });
+    }
+
+    res.json({ success: true, message: "Expense deleted" });
+  } catch (err) {
+    console.error("Error deleting expense:", err);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+});
 
 // Login Route
 app.post("/api/login", async (req, res) => {
