@@ -374,9 +374,18 @@ app.post("/api/generate-insights", async (req, res) => {
     }
   });
 // Delete Expense
+// Delete Expense
 app.delete("/api/expenses/:expenseId", verifyToken, async (req, res) => {
   try {
     const expenseId = req.params.expenseId;
+
+    // Check if expenseId is invalid or undefined
+    if (!expenseId || expenseId === "undefined") {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid expense ID",
+      });
+    }
 
     // Find the expense by ID and ensure it belongs to the authenticated user
     const expense = await Expense.findOne({
