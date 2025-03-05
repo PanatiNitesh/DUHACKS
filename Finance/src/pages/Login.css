@@ -1,158 +1,303 @@
-/* Login.css */
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Reset defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  color: #2b2d42;
+  line-height: 1.6;
+}
+
+/* Login Container */
 .login-container {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 50px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-top: 100px;
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 50px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 100px;
+}
+
+.login-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #333;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: transparent !important;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+.login-button {
+  width: 100%;
+  padding: 14px;
+  background-color: #2b2d42 !important;
+  color: #2b2d42 !important;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #2b2d42 !important;
+  transform: translateY(-2px);
+}
+
+/* Login Navbar */
+.login-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #0044cc;
+  color: white;
+}
+
+.go-back-button {
+  background: none;
+  border: 1px solid #2b2d42;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+
+.go-back-button:hover {
+  background-color: #ddd !important;
+  transform: translateY(-2px);
+}
+
+.website-name {
+  font-size: 24px;
+  margin: 0;
+  margin-left: 25px;
+  color: white;
+}
+
+/* Navbar */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: transparent !important;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin-right: 0; /* Removed unnecessary margin */
+  transform: none; /* Removed unnecessary transform */
+}
+
+.navbar-brand h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-left: 0; /* Removed unnecessary margin */
+  transform: none; /* Removed unnecessary transform */
+}
+
+.navbar-links .back-button {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease, all 0.3s ease;
+  margin-right: 0; /* Removed unnecessary margin */
+  transform: none; /* Removed unnecessary transform */
+}
+
+.navbar-links .login-button:hover {
+  background-color: white;
+  color: transparent !important;
+}
+
+.back-button {
+  background: none;
+  border: 1px solid white;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+.back-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .login-container {
+    margin: 30px auto;
+    padding: 40px;
+    margin-top: 80px;
   }
-  
-  .login-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-  }
-  
+
   .login-container h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 28px;
-    color: #333;
-    font-weight: 600;
+    font-size: 26px;
+    margin-bottom: 25px;
   }
-  
-  .form-group {
+
+  .form-group input,
+  .login-button {
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .login-navbar,
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .website-name,
+  .navbar-brand h1 {
+    font-size: 22px;
+  }
+
+  .go-back-button,
+  .back-button {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    max-width: 400px;
+    padding: 30px;
+    margin: 20px auto;
+    margin-top: 60px;
+  }
+
+  .login-container h2 {
+    font-size: 24px;
     margin-bottom: 20px;
   }
-  
+
   .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 14px;
-    color: #555;
-    font-weight: 500;
+    font-size: 13px;
   }
-  
-  .form-group input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    color: #333;
-    background-color: #f9f9f9;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .form-group input:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
-  }
-  
+
+  .form-group input,
   .login-button {
-    width: 100%;
-    padding: 14px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .login-button:hover {
-    background-color: #007bff;
-    transform: translateY(-2px);
+    padding: 8px;
+    font-size: 14px;
   }
 
-  .login-navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #0044cc; /* Updated color */
-    color: white;
-  }
-  
-  .go-back-button {
-    background: none;
-    border: 1px solid white; /* Added stroke */
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    padding: 8px 16px; /* Added padding for better appearance */
-    border-radius: 5px; /* Added border radius */
-    margin-left: 20px; /* Adjust as needed */
-  }
-  
-  .go-back-button:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Added hover effect */
-  }
-  
-  .website-name {
-    font-size: 24px;
-    margin: 0;
-    margin-left: 25px; /* Adjust as needed */
-  }
-
+  .login-navbar,
   .navbar {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background-color: #007bff;
-    color: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: var(--transition);
-    margin-right: 20px; /* Adjust as needed */
-    transform: translateX(-20px); 
+    padding: 10px 15px;
   }
-  
+
+  .website-name,
   .navbar-brand h1 {
-    margin: 0;
-    font-size: 24px;
-    font-weight: 600;
-    transition: var(--transition);
-    margin-left: 30px; /* Adjust as needed */
-    transform: translateX(-20px); 
-  }
-  
-  .navbar-links .back-button {
-    background-color: transparent;
-    border: 2px solid white;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    transition: var(--transition);
-    margin-right: 12px; /* Adjust as needed */
-    transform: translateX(-20px); 
-  }
-  
-  .navbar-links .login-button:hover {
-    background-color: white;
-    color: #007bff;
+    font-size: 20px;
   }
 
+  .go-back-button,
   .back-button {
-    background: none;
-    border: 1px solid white; /* Added stroke */
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    padding: 8px 16px; /* Added padding for better appearance */
-    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: 12px;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    max-width: 300px;
+    padding: 20px;
+    margin: 15px auto;
+    margin-top: 40px;
   }
 
-  .back-button:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Added hover effect */
+  .login-container h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
   }
-  
+
+  .form-group label {
+    font-size: 12px;
+  }
+
+  .form-group input,
+  .login-button {
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .login-navbar,
+  .navbar {
+    flex-direction: column;
+    padding: 10px 10px;
+    align-items: flex-start;
+  }
+
+  .login-navbar .website-name,
+  .navbar-brand {
+    margin-bottom: 10px;
+  }
+
+  .website-name,
+  .navbar-brand h1 {
+    font-size: 18px;
+  }
+
+  .login-navbar .go-back-button,
+  .navbar-links .back-button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+}

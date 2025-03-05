@@ -1,4 +1,22 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Poppins:wght@300;400;500;600;700&display=swap');
 
+/* Reset defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  color: #2b2d42;
+  line-height: 1.6;
+}
+
+/* Register Container */
 .register-container {
   max-width: 500px;
   margin: 50px auto;
@@ -40,7 +58,7 @@
   width: 100%;
   padding: 12px;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 16px;
   color: #333;
   background-color: #f9f9f9;
@@ -49,7 +67,7 @@
 
 .form-group input:focus,
 .form-group select:focus {
-  border-color: #007bff;
+  border-color: transparent !important;
   outline: none;
   box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
 }
@@ -65,10 +83,10 @@
 .register-button {
   width: 100%;
   padding: 14px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 8px;
+  background-color: #dddd;
+  color: #2b2d42;
+  border-color: black;
+  border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
@@ -85,56 +103,31 @@
 }
 
 .error-message {
-  color: #ff4d4f;
+  color: #ef476f;
   text-align: center;
   margin-bottom: 20px;
   font-size: 14px;
   font-weight: 500;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-  .register-container {
-    padding: 20px;
-    margin: 20px;
-  }
-
-  .register-container h2 {
-    font-size: 24px;
-  }
-
-  .form-group input,
-  .form-group select {
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  .register-button {
-    padding: 12px;
-    font-size: 14px;
-  }
-}
+/* Navbar */
 .navbar {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background-color: #007bff;
+  background-color: transparent !important;
   color: white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: var(--transition);
-  margin-right: 20px; /* Adjust as needed */
-  transform: translateX(-20px); 
+  transition: all 0.3s ease;
 }
 
 .navbar-brand h1 {
   margin: 0;
   font-size: 24px;
   font-weight: 600;
-  transition: var(--transition);
-  margin-left: 30px; /* Adjust as needed */
-  transform: translateX(-20px); 
+  transition: all 0.3s ease;
 }
 
 .navbar-links .back-button {
@@ -144,29 +137,151 @@
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 8px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  transition: var(--transition);
-  margin-right: 20px; /* Adjust as needed */
-  transform: translateX(-20px); 
+  border-radius: 12px;
+  transition: background-color 0.3s ease, color 0.3s ease, all 0.3s ease;
 }
 
 .navbar-links .login-button:hover {
   background-color: white;
-  color: #007bff;
+  color: transparent !important;
 }
 
 .go-back-button {
   background: none;
-  border: 1px solid white; /* Added stroke */
+  border: 1px solid white;
   color: white;
   font-size: 16px;
   cursor: pointer;
-  padding: 8px 16px; /* Added padding for better appearance */
+  padding: 8px 16px;
   border-radius: 5px;
-  margin-right: 20px; /* Adjust as needed */
+  transition: background-color 0.3s ease, all 0.3s ease;
 }
 
 .go-back-button:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Added hover effect */
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .register-container {
+    margin: 30px auto;
+    padding: 30px;
+    margin-top: 80px;
+  }
+
+  .register-container h2 {
+    font-size: 26px;
+    margin-bottom: 25px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .register-button {
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .navbar-brand h1 {
+    font-size: 22px;
+  }
+
+  .navbar-links .back-button,
+  .go-back-button {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .register-container {
+    max-width: 400px;
+    padding: 20px;
+    margin: 20px auto;
+    margin-top: 60px;
+  }
+
+  .register-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .register-button {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .navbar {
+    padding: 10px 15px;
+  }
+
+  .navbar-brand h1 {
+    font-size: 20px;
+  }
+
+  .navbar-links .back-button,
+  .go-back-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-container {
+    max-width: 300px;
+    padding: 15px;
+    margin: 15px auto;
+    margin-top: 40px;
+  }
+
+  .register-container h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .register-button {
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    padding: 10px 10px;
+    align-items: flex-start;
+  }
+
+  .navbar-brand {
+    margin-bottom: 10px;
+  }
+
+  .navbar-brand h1 {
+    font-size: 18px;
+  }
+
+  .navbar-links {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .navbar-links .back-button,
+  .go-back-button {
+    padding: 5px 10px;
+    font-size: 10px;
+    margin-right: 5px;
+  }
 }

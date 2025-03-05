@@ -1,36 +1,37 @@
 /* Base styles */
-:root {
-  --primary-color: #0056b3;
-  --secondary-color: #003d82;
-  --background-color: #f8f9fa;
-  --card-background: white;
-  --text-color: #333;
-  --border-radius: 10px;
-  --transition: all 0.3s ease;
-  --shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap');
+
+/* Reset defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body, html {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: var(--background-color);
+  background: #f8f9fa;
 }
 
 /* Enhanced Navbar */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  color: white;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  box-shadow: var(--shadow);
+  width: 100% !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 20px 40px !important;
+  background-color: transparent !important; 
+  backdrop-filter: blur(5px) !important;
+  color: #000000 !important; 
+  box-shadow: none !important;
+  border-bottom: 0.1px solid rgba(128, 128, 128, 0.7) !important; 
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  transition: all 0.3s ease !important;
+  box-sizing: border-box !important;
 }
 
 .title {
@@ -46,18 +47,19 @@ body, html {
 
 .back-button {
   background: white;
-  color: var(--primary-color);
+  color: #0056b3;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
-  border-radius: var(--border-radius);
+  border-radius: 10px;
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.3s ease;
+  
 }
 
 /* Main Layout */
 .expense-container {
-  padding: 90px 30px 30px;
+  padding: 0px 30px 30px;
   min-height: 100vh;
 }
 
@@ -71,16 +73,16 @@ body, html {
 
 /* Enhanced Form Styling */
 .expense-form {
-  background: var(--card-background);
+  background: white;
   padding: 30px;
   width: 100%;
   max-width: 400px;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .expense-form h2 {
-  color: var(--primary-color);
+  color: #0056b3;
   text-align: center;
   margin-bottom: 25px;
 }
@@ -91,37 +93,37 @@ body, html {
   padding: 12px;
   margin-bottom: 15px;
   border: 2px solid #e0e0e0;
-  border-radius: var(--border-radius);
+  border-radius: 10px;
   font-size: 16px;
-  transition: var(--transition);
+  transition: all 0.3s ease;
 }
 
 .expense-form input:focus,
 .expense-form select:focus {
-  border-color: var(--primary-color);
+  border-color: #0056b3;
   outline: none;
 }
 
 .expense-form button {
   width: 100%;
-  background: var(--primary-color);
+  background: #0056b3;
   color: white;
   padding: 12px;
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: 10px;
   font-size: 16px;
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.3s ease;
 }
 
 /* Enhanced Table Styling */
 .expense-list {
-  background: var(--card-background);
+  background: white;
   padding: 30px;
   width: 100%;
   max-width: 700px;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .table-container {
@@ -143,7 +145,7 @@ th, td {
 }
 
 th {
-  background: var(--primary-color);
+  background: #0056b3;
   color: white;
   font-weight: 500;
 }
@@ -164,32 +166,32 @@ tr:hover {
   margin-top: 20px;
   padding: 20px;
   background: #f8f9fa;
-  border-radius: var(--border-radius);
+  border-radius: 10px;
   text-align: right;
 }
 
 .total-expense h3 {
-  color: var(--primary-color);
+  color: #0056b3;
   margin: 0;
 }
 
 /* Enhanced Analysis Button */
 .analysis-button {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(135deg, #0056b3, #003d82); /* Fixed gradient syntax */
   color: white;
   border: none;
   padding: 15px 30px;
   font-size: 16px;
-  border-radius: var(--border-radius);
+  border-radius: 10px;
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.3s ease;
   display: block;
   margin: 30px auto;
   width: auto;
   min-width: 200px;
   text-align: center;
   text-decoration: none;
-  box-shadow: var(--shadow);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Responsive Design */
@@ -215,18 +217,61 @@ tr:hover {
     font-size: 20px;
   }
 
+  .username {
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .back-button {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
   .expense-container {
     padding: 80px 15px 20px;
   }
+
+  .expense-form,
+  .expense-list {
+    padding: 20px;
+  }
+
+  .expense-form h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .expense-form input,
+  .expense-form select,
+  .expense-form button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .total-expense {
+    padding: 15px;
+  }
+
+  .analysis-button {
+    padding: 12px 25px;
+    font-size: 14px;
+    min-width: 150px;
+  }
 }
 
-/* Add these styles to your expense.css file */
-
+/* Category Search Container */
 .category-search-container {
   position: relative;
   width: 100%;
 }
 
+/* Category Suggestions */
 .category-suggestions {
   position: absolute;
   top: 100%;
@@ -281,7 +326,7 @@ tr:hover {
 }
 
 .form-input:focus {
-  border-color: var(--primary-color);
+  border-color: #0056b3;
   outline: none;
   box-shadow: 0 0 0 2px rgba(0, 86, 179, 0.1);
 }
@@ -342,7 +387,6 @@ tr:hover {
   overflow-x: auto;
   margin: 1rem 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  color: black;
 }
 
 table {
@@ -360,9 +404,10 @@ th, td {
 th {
   background-color: #f8f9fa;
   font-weight: 600;
-  color: black;
+  color: #333;
 }
 
 tr:hover {
   background-color: #f5f5f5;
 }
+

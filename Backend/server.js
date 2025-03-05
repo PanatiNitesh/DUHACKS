@@ -13,7 +13,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(cors({ origin: "https://cost-sage-du-hacks.vercel.app/", credentials: true }));
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(express.json());
 
 mongoose
@@ -373,7 +373,35 @@ app.post("/api/generate-insights", async (req, res) => {
       res.status(500).json({ success: false, message: "Failed to generate insights" });
     }
   });
+// Delete Expense
+app.delete("/api/expenses/:expenseId", verifyToken, async (req, res) => {
+  try {
+    const expenseId = req.params.expenseId;
 
+    // Find the expense by ID and ensure it belongs to the authenticated user
+    const expense = await Expense.findOne({
+      _id: expenseId,
+      username: req.user.name,
+    });
+
+    if (!expense) {
+      console.log(`Expense deletion failed: Expense not found (ID: ${expenseId})`);
+      return res.status(404).json({
+        success: false,
+        message: "Expense not found or you don't have permission to delete it",
+      });
+    }
+
+    // Delete the expense
+    await Expense.deleteOne({ _id: expenseId });
+
+    console.log(`Expense deleted by user: ${req.user.name}, ID: ${expenseId}`);
+    res.json({ success: true, message: "Expense deleted successfully" });
+  } catch (err) {
+    console.error("Error deleting expense:", err);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+});
 // Error handling middleware (should be at the end)
 app.use((err, req, res, next) => {
     console.error(`[${new Date().toISOString()}] Error: ${err.message}`);

@@ -28,7 +28,8 @@ const AnalysisPage = () => {
   const [analysisData, setAnalysisData] = useState<AnalysisData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [insights, setInsights] = useState<string | null>(null);
+  const [insights, setInsights] = useState<string[]>([]);
+  const [insightsLoading, setInsightsLoading] = useState(true);
   const [activeChart, setActiveChart] = useState<"bar" | "line" | "pie">("bar"); // State for active chart
   const navigate = useNavigate();
 
@@ -85,6 +86,7 @@ const AnalysisPage = () => {
 
   const generateInsights = async (data: AnalysisData[]) => {
     try {
+      setInsightsLoading(true);
       // Prepare data for AI analysis
       const categories = data.map((item) => item._id);
       const amounts = data.map((item) => item.totalAmount);
@@ -100,14 +102,25 @@ const AnalysisPage = () => {
         }
       );
   
-      // Extract the generated insights
-      const insights = response.data.insights;
-  
-      // Set the insights state
-      setInsights(insights);
+      // Extract the generated insights and process them
+      const rawInsights = response.data.insights;
+      // Parse insights into array, clean unwanted content and format each point
+      const cleanedInsights = rawInsights
+        .split("\n")
+        .filter((line: string) => 
+          line.trim() !== "" && 
+          !line.includes("Let me know if you would like") &&
+          !line.includes("Here's an analysis") &&
+          !line.includes("Based on the expense data")
+        )
+        .map((line: string) => line.trim());
+      
+      setInsights(cleanedInsights);
     } catch (err) {
       console.error("Error generating insights:", err);
-      setInsights("Unable to generate insights at this time.");
+      setInsights(["Unable to generate insights at this time."]);
+    } finally {
+      setInsightsLoading(false);
     }
   };
 
@@ -191,87 +204,89 @@ const AnalysisPage = () => {
 
   return (
     <div className="div">
-    <nav className="navbar">
-            <div className="navbar-brand">
-              <h1>Cost-Sage</h1>
+      <nav className="navbar">
+        <div className="navbar-brand">
+          <h1>Cost-Sage</h1>
+        </div>
+        <div className="navbar-links">
+          <button className="back-button" onClick={() => navigate("/dashboard")}>
+            ← Back to Dashboard
+          </button>
+        </div>
+      </nav>
+      <div className="analysis-container">
+        <h1>Expense Analysis: {expenseType}</h1>
+
+        {loading && <p>Loading analysis data...</p>}
+        {error && <p className="error-message">Error: {error}</p>}
+
+        {!loading && !error && (
+          <>
+            {/* Tabs for Chart Selection */}
+            <div className="chart-tabs">
+              <button
+                className={`tab-button ${activeChart === "bar" ? "active" : ""}`}
+                onClick={() => setActiveChart("bar")}
+              >
+                Bar Chart
+              </button>
+              <button
+                className={`tab-button ${activeChart === "line" ? "active" : ""}`}
+                onClick={() => setActiveChart("line")}
+              >
+                Line Chart
+              </button>
+              <button
+                className={`tab-button ${activeChart === "pie" ? "active" : ""}`}
+                onClick={() => setActiveChart("pie")}
+              >
+                Pie Chart
+              </button>
             </div>
-            <div className="navbar-links">
-            <button className="back-button" onClick={() => navigate("/dashboard")}>
-        ← Back to Dashboard
-      </button>
+
+            {/* Render Active Chart */}
+            <div className="chart-container">
+              {activeChart === "bar" && <Bar data={barChartData} options={chartOptions} />}
+              {activeChart === "line" && <Line data={lineChartData} options={chartOptions} />}
+              {activeChart === "pie" && <Pie data={pieChartData} options={chartOptions} />}
             </div>
-          </nav>
-    <div className="analysis-container">
-      <h1>Expense Analysis: {expenseType}</h1>
 
-      {loading && <p>Loading analysis data...</p>}
-      {error && <p className="error-message">Error: {error}</p>}
-
-      {!loading && !error && (
-        <>
-          {/* Tabs for Chart Selection */}
-          <div className="chart-tabs">
-            <button
-              className={`tab-button ${activeChart === "bar" ? "active" : ""}`}
-              onClick={() => setActiveChart("bar")}
-            >
-              Bar Chart
-            </button>
-            <button
-              className={`tab-button ${activeChart === "line" ? "active" : ""}`}
-              onClick={() => setActiveChart("line")}
-            >
-              Line Chart
-            </button>
-            <button
-              className={`tab-button ${activeChart === "pie" ? "active" : ""}`}
-              onClick={() => setActiveChart("pie")}
-            >
-              Pie Chart
-            </button>
-          </div>
-
-          {/* Render Active Chart */}
-          <div className="chart-container">
-            {activeChart === "bar" && <Bar data={barChartData} options={chartOptions} />}
-            {activeChart === "line" && <Line data={lineChartData} options={chartOptions} />}
-            {activeChart === "pie" && <Pie data={pieChartData} options={chartOptions} />}
-          </div>
-          <div className="insights-container">
-  <h2>
-    <strong>AI Insights</strong> {/* Bold title */}
-  </h2>
-  {insights ? (
-    <div className="insights-text">
-      {insights
-        .split("\n") // Split the insights into lines
-        .filter((line) => !line.includes("Let me know if you would like an entirely different analysis")) // Filter out unwanted lines
-        .map((point, index) => {
-          // Check if the line starts with a number (e.g., "1.", "2.", etc.)
-          if (/^\d+\./.test(point)) {
-            return (
-              <p key={index} style={{ textAlign: "justify" }}>
-                <strong>{point.split(".")[0]}.</strong> {/* Bold the number */}
-                {point.split(".").slice(1).join(".")} {/* Rest of the text */}
-              </p>
-            );
-          } else if (point.trim() !== "") { // Ensure empty lines are not rendered
-            return (
-              <p key={index} style={{ textAlign: "justify" }}>
-                {point}
-              </p>
-            );
-          }
-          return null; // Skip empty lines
-        })}
-    </div>
-  ) : (
-    <p>Generating insights...</p>
-  )}
-</div>
-        </>
-      )}
-
+            {/* Improved AI Insights Card */}
+            <div className="insights-card">
+              <div className="insights-header">
+                <h2>AI Insights</h2>
+                {insightsLoading && <div className="insights-loader">Processing data...</div>}
+              </div>
+              
+              {!insightsLoading && insights.length > 0 ? (
+                <div className="insights-content">
+                  {insights.map((insight, index) => {
+                    // Check if it's a numbered point
+                    const isNumbered = /^\d+\./.test(insight);
+                    
+                    if (isNumbered) {
+                      const [number, ...rest] = insight.split('.');
+                      return (
+                        <div key={index} className="insight-point">
+                          <span className="insight-number">{number}.</span>
+                          <span className="insight-text">{rest.join('.')}</span>
+                        </div>
+                      );
+                    } else {
+                      return (
+                        <div key={index} className="insight-point">
+                          <span className="insight-text">{insight}</span>
+                        </div>
+                      );
+                    }
+                  })}
+                </div>
+              ) : !insightsLoading ? (
+                <div className="insights-empty">No insights available for this data.</div>
+              ) : null}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

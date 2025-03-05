@@ -1,17 +1,17 @@
 /* Base Styles */
-:root {
-  --primary-color: #0056b3;
-  --hover-color: #003d82;
-  --background: #f0f2f5;
-  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --hover-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Reset defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body, html {
   margin: 0;
   padding: 0;
-  background: var(--background);
+  background: #f0f2f5;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
@@ -31,40 +31,40 @@ body, html {
 }
 
 .website-name {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 600;
-  color: #ffffff;
+  color: #4361ee;
   margin-left: 25px; /* Adjust as needed */
-
 }
 
+/* Hamburger Button */
 .hamburger-button {
   background: none;
   border: none;
   font-size: 30px;
   cursor: pointer;
-  color: white;
+  color: black;
   padding: 8px;
   border-radius: 50%;
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin-right: 12px; /* Adjust as needed */
-  transform: translateX(-20px); 
+  transform: translateX(-20px);
 }
 
 .hamburger-button:hover {
-  background: rgba(254, 254, 255, 0.1);
+  background: #dddd;
 }
 
 /* Floating Sidebar */
 .floating-sidebar {
   position: fixed;
-  top: 75px;
+  top: 100px;
   right: -400px;
   width: 280px;
   background: white;
   border-radius: 16px;
-  box-shadow: var(--card-shadow);
-  transition: var(--transition);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);  
   z-index: 999;
   padding: 16px;
   margin: 10px;
@@ -79,19 +79,24 @@ body, html {
   padding: 0;
   margin: 0;
 }
-
+.username {
+  font-size: 30px;
+  opacity: 0.9;
+  color: black;
+  font-weight: 500;
+}
 .sidebar-menu li {
   padding: 12px 16px;
   cursor: pointer;
   border-radius: 8px;
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 500;
   color: #333;
 }
 
 .sidebar-menu li:hover {
   background: rgba(0, 86, 179, 0.1);
-  color: var(--primary-color);
+  color: #0056b3;
 }
 
 /* Main Section */
@@ -117,8 +122,8 @@ body, html {
   background: white;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: var(--card-shadow);
-  transition: var(--transition);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   position: relative;
   transform: translateY(0);
@@ -131,7 +136,7 @@ body, html {
 
 .feature-card:hover {
   transform: translateY(-8px);
-  box-shadow: var(--hover-shadow);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
 }
 
 .feature-card::after {
@@ -143,7 +148,7 @@ body, html {
   bottom: 0;
   background: rgba(0, 0, 0, 0.02);
   opacity: 100;
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .feature-card:hover::after {
@@ -190,15 +195,77 @@ body, html {
 }
 
 /* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .feature-cards {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Adjust for tablets */
+  }
+
+  .feature-card {
+    padding: 12px;
+  }
+
+  .card-image {
+    width: 180px;
+    height: 180px;
+    margin-right: 16px;
+  }
+
+  .feature-card h2 {
+    font-size: 22px;
+  }
+
+  .feature-card p {
+    font-size: 16px;
+  }
+
+  .main-section {
+    padding: 16px;
+  }
+}
+
 @media (max-width: 768px) {
+  .navbar {
+    padding: 12px 16px;
+    flex-wrap: wrap;
+  }
+
+  .website-name {
+    font-size: 20px;
+    margin-left: 10px;
+  }
+
+  .hamburger-button {
+    font-size: 24px;
+    padding: 6px;
+    margin-right: 8px;
+    transform: none; /* Remove transform on mobile */
+  }
+
+  .floating-sidebar {
+    width: 240px;
+    top: 60px;
+  }
+
+  .sidebar-menu li {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .feature-cards {
+    grid-template-columns: 1fr; /* One column for mobile */
+  }
+
   .feature-card {
     flex-direction: column; /* Stack image on top in smaller screens */
     align-items: center;
+    padding: 12px;
     text-align: center;
   }
 
   .card-image {
     margin: 0 0 16px 0; /* Space below image */
+    width: 150px;
+    height: 150px;
   }
 
   .card-content {
@@ -208,6 +275,67 @@ body, html {
 
   .feature-card h2, .feature-card p {
     text-align: center; /* Center align text */
+  }
+
+  .feature-card h2 {
+    font-size: 18px;
+  }
+
+  .feature-card p {
+    font-size: 14px;
+  }
+
+  .main-section {
+    margin-top: 60px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 10px 12px;
+  }
+
+  .website-name {
+    font-size: 18px;
+    margin-left: 5px;
+  }
+
+  .hamburger-button {
+    font-size: 20px;
+    padding: 4px;
+    margin-right: 5px;
+  }
+
+  .floating-sidebar {
+    width: 200px;
+    top: 50px;
+  }
+
+  .sidebar-menu li {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .feature-card {
+    padding: 8px;
+  }
+
+  .card-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .feature-card h2 {
+    font-size: 16px;
+  }
+
+  .feature-card p {
+    font-size: 12px;
+  }
+
+  .main-section {
+    padding: 8px;
   }
 }
 
@@ -244,7 +372,7 @@ body, html {
 .welcome-message {
   font-size: 18px;
   font-weight: 500;
-  color: #ffff;
+  color: white;
   margin: 0 20px;
 }
 
@@ -255,7 +383,7 @@ body, html {
   padding: 24px;
   margin: 24px auto;
   max-width: 1400px;
-  box-shadow: var(--card-shadow);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .recent-expenses h2 {
@@ -292,32 +420,43 @@ body, html {
   background-color: #f8f9fa;
 }
 
-/* Responsive Adjustments */
+/* Responsive Adjustments for Recent Expenses */
 @media (max-width: 768px) {
-  .feature-cards {
-    grid-template-columns: 1fr; /* One column for mobile */
+  .recent-expenses {
+    padding: 16px;
+    margin: 16px auto;
+    max-width: 100%;
   }
 
-  .feature-card {
-    flex-direction: column; /* Stack image on top in smaller screens */
-    align-items: center;
-    text-align: center;
+  .recent-expenses h2 {
+    font-size: 18px;
   }
 
-  .card-image {
-    margin: 0 0 16px 0; /* Space below image */
-  }
-
-  .card-content {
-    align-items: center; /* Center align text */
-    text-align: center; /* Center align text */
-  }
-
-  .feature-card h2, .feature-card p {
-    text-align: center; /* Center align text */
+  .expense-history th,
+  .expense-history td {
+    padding: 8px;
+    font-size: 14px;
   }
 }
 
+@media (max-width: 480px) {
+  .recent-expenses {
+    padding: 12px;
+    margin: 12px auto;
+  }
+
+  .recent-expenses h2 {
+    font-size: 16px;
+  }
+
+  .expense-history th,
+  .expense-history td {
+    padding: 6px;
+    font-size: 12px;
+  }
+}
+
+/* Logout Button */
 .logout-button {
   background-color: #ab3939;
   color: white;
@@ -328,6 +467,7 @@ body, html {
   font-size: 16px;
   width: 50%;
   text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logout-button:hover {

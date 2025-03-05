@@ -24,27 +24,27 @@ const Dashboard = () => {
   const expenseTypes = [
     {
       name: "Full Expense Tracker",
-      img: "public/assets/expense-tracker.png",
+      img: "expense-tracker.png",
       description: "Track all your expenses in one place",
     },
     {
       name: "Business Expense Tracker",
-      img: "public/assets/business-expense.png",
+      img: "business-expense.png",
       description: "Manage your business-related expenses",
     },
     {
       name: "Personal Expense Tracker",
-      img: "public/assets/personal-expense.png",
+      img: "personal-expense.png",
       description: "Keep track of your personal spending",
     },
     {
       name: "Daily Expense Tracker",
-      img: "public/assets/daily-expense.png",
+      img: "daily-expense.png",
       description: "Monitor your daily expenditures",
     },
     {
       name: "Other Expenses",
-      img: "public/assets/other-expenses.png",
+      img: "other-expenses.png",
       description: "Track miscellaneous expenses",
     },
   ];
@@ -151,9 +151,7 @@ const Dashboard = () => {
         <div className="navbar-left">
           <h1 className="website-name">Cost-Sage</h1>
         </div>
-        <div className="navbar-center">
-          <span className="welcome-message">Welcome, {username}!</span>
-        </div>
+          <span className="username">Welcome, {username}</span>
         <div className="navbar-right">
           <button className="hamburger-button" onClick={toggleSidebar}>
             ☰

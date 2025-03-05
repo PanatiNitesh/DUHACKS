@@ -55,10 +55,10 @@ src="public/assets/nitesh.jpg"             alt="Nitesh Reddy"
             <a href="https://github.com/PanatiNitesh" target="_blank" rel="noopener noreferrer">
             <FontAwesomeIcon icon={faGithub} />
             </a>
-            <a href="https://x.com/nitesh24032005" target="_blank" rel="noopener noreferrer">
+            <a href="https://x.com/Nitesh_Reddy_" target="_blank" rel="noopener noreferrer">
             <FontAwesomeIcon icon={faTwitter} />
             </a>
-            <a href="https://www.linkedin.com/in/nitesh-reddy-b39467282/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/nitesh-reddy-dev/" target="_blank" rel="noopener noreferrer">
             <FontAwesomeIcon icon={faLinkedin} />
             </a>
           </div>
