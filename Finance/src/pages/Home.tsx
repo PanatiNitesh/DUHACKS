@@ -37,12 +37,6 @@ const Home = () => {
             Sign Up
           </button>
         </div>
-
-        {/* Mobile menu button */}
-        <div className="mobile-menu-toggle" onClick={toggleMobileMenu}>
-          <span className={isMobileMenuOpen ? "bar open" : "bar"}></span>
-          <span className={isMobileMenuOpen ? "bar open" : "bar"}></span>
-          <span className={isMobileMenuOpen ? "bar open" : "bar"}></span>
         </div>
       </nav>
 
