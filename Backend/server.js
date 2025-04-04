@@ -400,7 +400,7 @@ app.delete("/api/expenses/:expenseId", verifyToken, async (req, res) => {
         message: "Expense not found or you don't have permission to delete it",
       });
     }
-
+//
     // Delete the expense
     await Expense.deleteOne({ _id: expenseId });
 
